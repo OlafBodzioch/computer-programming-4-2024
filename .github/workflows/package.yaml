@@ -1,7 +1,8 @@
 name: Create package
 on:
   push:
-    tags: ~
+    tags:
+      - "v*.*.*"
 jobs:
   Create-Package:
     runs-on: ubuntu-latest
