@@ -22,5 +22,5 @@ jobs:
       - uses: ncipollo/release-action@v1
         with:
           artifacts: "target/app.jar"
-          body: "My release${{ github.ref }}"
+          body: "My release ${{ github.ref }}"
           name: "Release candidate ${{ github.ref }}"
