@@ -4,23 +4,23 @@ on:
     tags:
       - "v*.*.*"
 jobs:
-  Create-Package:
+  CreatePackage:
     runs-on: ubuntu-latest
     permissions:
-        contents: write
+      contents: write
     steps:
-    - name: "Checkout repo"    
-      uses: actions/checkout@v4
-    - uses: actions/setup-java@v4
-      with:
-        java-version: '17'
-        distribution: 'corretto'
-    - name : "Run maven test"  
-      run: mvn -DskipTests package
-    - run: ls -la target/
-    - run: mv target/*.jar target/app.jar
-    - uses: ncipollo/release-action@v1
-      with:
-        artifacts: "target/app.jar"
-        body: "My release${{ github.ref }}"
-        name: "Release candidate ${{ github.ref }}"
+      - name: "Checkout repo"    
+        uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'corretto'
+      - name : "Run maven test"  
+        run: mvn -DskipTests package
+      - run: ls -la target/
+      - run: mv target/*.jar target/app.jar
+      - uses: ncipollo/release-action@v1
+        with:
+          artifacts: "target/app.jar"
+          body: "My release${{ github.ref }}"
+          name: "Release candidate ${{ github.ref }}"
